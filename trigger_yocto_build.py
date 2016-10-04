@@ -14,7 +14,7 @@ branch = s.sign(os.environ['BRANCH'])
 machine = s.sign(os.environ['YOCTO_MACHINE'])
 job = s.sign(os.environ["JOB"])
 
-r = requests.post('http://home.distefa.no:9999/trigger', data={'job': job, 'machine':machine, 'branch': branch, 'user': user})
+r = requests.post('http://146.185.179.202:9999/trigger', data={'job': job, 'machine':machine, 'branch': branch, 'user': user})
 uid = r.json()["build"]
 print "Build: %s started" % uid
 
@@ -25,7 +25,7 @@ temp = ""
 while time.time() < max_time:
     try:
         time.sleep(2)
-        r = requests.get("http://home.distefa.no:9999/log/" + uid)
+        r = requests.get("http://146.185.179.202:9999/log/" + uid)
         j = json.loads(r.text)
 
         if j != temp:
