@@ -14,7 +14,7 @@ install:
 script: 
    -  KEY=${TRIGGER_KEY} JOB="yoctobuild-stable" GITHUB_USER="mendersoftware" BRANCH="master" YOCTO_MACHINE="beaglebone" python trigger_yocto_build.py &
    -  KEY=${TRIGGER_KEY} JOB="yoctobuild-stable" GITHUB_USER="mendersoftware" BRANCH="master" YOCTO_MACHINE="vexpress-qemu" python trigger_yocto_build.py &
-   -  wait
+   -  travis_wait 60 wait
 
 
 # configure notifications (email, IRC, campfire etc)
